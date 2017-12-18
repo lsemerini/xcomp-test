@@ -5,5 +5,5 @@ window.idp = xcomponent.create({
   // The html tag used to render my component
   tag: 'idp',
   // The url that will be loaded in the iframe or popup, when someone includes my component on their page
-  url: 'http://somewhere.com/idp.html'
+  url: 'http://aofrost.com/lucho/idp.html'
 });

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/4.0.2/bootstrap-material-design.css" />
+    <!-- REQUIRE SCRIPT HERE -->
+    <script src="http://somewhere/idp.js"></script>
+    <style>
+      .question {
+        padding: 16px
+      }
+      #idpContainer {
+        margin: 16px;
+        padding: 16px;
+        border: 1px solid #303030;
+      }
+      #submitSurvey {
+        margin: 16px;
+        padding: 16px;
+        background: teal;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Survey Time</h1>
+    <div class="question">
+      <h4> Question A - What is your favorite color ?</h4>
+      <input id="questionA" type="text" />
+    </div>
+    <div class="question">
+      <h4> Question B - What is your name ?</h4>
+      <input id="questionB" type="text" />
+    </div>
+    <div style="display: none" id="idpContainer"></div>
+    <br/><br/>
+    <input id="submitSurvey" type="submit" value="Submit Survey" style="display: none"/>
+    <script>
+      var questionA, questionB = ''
+      document.querySelector('#questionA').addEventListener('keypress', function(event) {
+        questionA = event.target.value
+      })
+      document.querySelector('#questionB').addEventListener('keypress', function(event) {
+        questionB = event.target.value
+        if (questionA !== '' && questionB !== '') {
+          document.querySelector('#idpContainer').style.display = 'inline-block'
+        }
+      })
+      // VALIDATION WIDGET STARTS HERE
+      idp.render({
+        onValidate: function() {
+          document.querySelector('#submitSurvey').style.display = 'inline-block'
+        }
+      }, '#idpContainer')
+    </script>
+  </body>
+</html>
